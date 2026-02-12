@@ -1,9 +1,10 @@
 // shows list of places
 
 import 'package:flutter/material.dart';
+import 'package:favorite_places_app/widgets/places_list.dart';
 
-class PlacesListScreen extends StatelessWidget {
-     const PlacesListScreen({super.key});
+class PlacesScreen extends StatelessWidget {
+     const PlacesScreen({super.key});
 
      @override
      Widget build(BuildContext context) {
@@ -17,9 +18,8 @@ class PlacesListScreen extends StatelessWidget {
              ),
            ],
          ),
-         body: const Center(
-           child: Text('No places added yet.'),
-
+         body: PlacesList(
+           places: [],
          ),
        );
      }
