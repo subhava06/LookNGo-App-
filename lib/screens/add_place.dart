@@ -1,0 +1,1 @@
+// Screen used to add places to the list

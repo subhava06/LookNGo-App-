@@ -1,0 +1,1 @@
+//displays further detail about the place
