@@ -4,6 +4,7 @@
 //ans also pass that image back to the add place screen to add it to the list
 
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';'
 
 class ImageInput extends StatefulWidget {
   const ImageInput({super.key});
@@ -13,6 +14,12 @@ class ImageInput extends StatefulWidget {
 }
 
 class _ImageInputState extends State<ImageInput> {
+
+  void _takePicture() {
+     final imagePicker = ImagePicker();
+     imagePicker.pickImage(source: ImageSource.camera, maxWidth: 600, );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -27,7 +34,7 @@ class _ImageInputState extends State<ImageInput> {
       child: TextButton.icon(
         icon: const Icon(Icons.camera),
         label: const Text('Take Picture'),
-          onPressed: () {},
+          onPressed: _takePicture,
       ), // it should either be a preview of the image or a button that allows us to take image
     );
   }
