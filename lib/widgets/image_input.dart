@@ -3,7 +3,6 @@
 // show a preview of the image that was taken
 //ans also pass that image back to the add place screen to add it to the list
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ImageInput extends StatefulWidget {
@@ -17,6 +16,11 @@ class _ImageInputState extends State<ImageInput> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: BoxDecoration(
+        border: Border.all(
+            width: 3,
+            color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.2)),
+      ),
       height: 250,
       width: double.infinity,
       alignment: Alignment.center, //centres the child horz and vert inside the container
