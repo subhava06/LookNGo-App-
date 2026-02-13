@@ -47,6 +47,9 @@ class _AddPlaceScreenState extends ConsumerState<AddPlaceScreen> {
               style: TextStyle(fontSize: 20, color: Theme.of(context).colorScheme.onSurface),
               controller: _titleController,
             ),
+
+            // image input
+
             const SizedBox(height: 20),
             ElevatedButton.icon(
               onPressed: _savePlace,
