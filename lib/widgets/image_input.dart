@@ -3,8 +3,9 @@
 // show a preview of the image that was taken
 //ans also pass that image back to the add place screen to add it to the list
 
+import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';'
+import 'package:image_picker/image_picker.dart';
 
 class ImageInput extends StatefulWidget {
   const ImageInput({super.key});
@@ -15,13 +16,42 @@ class ImageInput extends StatefulWidget {
 
 class _ImageInputState extends State<ImageInput> {
 
-  void _takePicture() {
+  // to show preview of image
+   File? _selectedImage;
+
+  void _takePicture() async{
      final imagePicker = ImagePicker();
-     imagePicker.pickImage(source: ImageSource.camera, maxWidth: 600, );
+    final pickedImage = await imagePicker.pickImage(source: ImageSource.camera, maxWidth: 600, );
+
+    if(pickedImage== null) {
+      return;
+    }
+
+    setState(() {
+      _selectedImage = File(pickedImage.path);
+
+    });
   }
 
   @override
   Widget build(BuildContext context) {
+
+    Widget content = TextButton.icon(
+      icon: const Icon(Icons.camera),
+      label: const Text('Take Picture'),
+      onPressed: _takePicture,
+    );
+
+
+    if(_selectedImage != null) {
+      content = Image.file(_selectedImage!,
+        fit: BoxFit.cover,
+        width: double.infinity,
+        height: double.infinity,
+      );
+    }
+
+
     return Container(
       decoration: BoxDecoration(
         border: Border.all(
@@ -31,11 +61,7 @@ class _ImageInputState extends State<ImageInput> {
       height: 250,
       width: double.infinity,
       alignment: Alignment.center, //centres the child horz and vert inside the container
-      child: TextButton.icon(
-        icon: const Icon(Icons.camera),
-        label: const Text('Take Picture'),
-          onPressed: _takePicture,
-      ), // it should either be a preview of the image or a button that allows us to take image
+      child: content,// it should either be a preview of the image or a button that allows us to take image
     );
   }
 }
