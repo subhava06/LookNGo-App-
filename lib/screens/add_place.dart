@@ -1,6 +1,7 @@
 // Screen used to add places to the list
 //to manage user i/p...so stf widget
 import 'package:favorite_places_app/users/user_places.dart';
+import 'package:favorite_places_app/widgets/location_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'dart:io';
@@ -57,6 +58,10 @@ class _AddPlaceScreenState extends ConsumerState<AddPlaceScreen> {
               _selectedImage = image;
             },
             ),
+
+            const SizedBox(height: 10,),
+            LocationInput(),
+
             const SizedBox(height: 20),
             ElevatedButton.icon(
               onPressed: _savePlace,
